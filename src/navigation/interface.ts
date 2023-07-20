@@ -5,7 +5,7 @@ export type RootStackParamList = {
   PlantView: {};
   PlantCreate: {};
   Hydrate: {};
-  Settings: {};
+  SettingsScreen: {};
 };
 
 export type RootStackRouteProps<T extends keyof RootStackParamList> = RouteProp<

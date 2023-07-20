@@ -1,172 +1,160 @@
 import React from "react";
-import { Animated, Easing, View, TouchableOpacity } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import { useTheme } from "../../../../hooks/theme";
+import { Animated, View, TouchableOpacity, StyleSheet } from "react-native";
+import { useNavigation, NavigationProp } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
+import { useTheme } from "../../../../hooks/theme";
+import {
+  RootStackParamList,
+  RootStackRouteProps,
+} from "../../../../navigation/interface";
 import HydrateIcon from "../../../../assets/hydrate";
 
-const Menu = () => {
-  const { navigate } = useNavigation();
-  const { theme } = useTheme();
-  const active = React.useRef(false);
-  const animatedState = new Animated.Value(0);
+const Button = Animated.createAnimatedComponent(TouchableOpacity);
 
-  const handleActive = () => {
-    Animated.timing(animatedState, {
-      toValue: active.current ? 0 : 1,
-      //   delay: 50,
-      easing: Easing.ease,
+const Menu = () => {
+  const { navigate } = useNavigation<NavigationProp<RootStackParamList>>();
+  const { theme } = useTheme();
+
+  const [Button1] = React.useState(new Animated.Value(0));
+  const [Button2] = React.useState(new Animated.Value(0));
+  const [Button3] = React.useState(new Animated.Value(0));
+  const [opacity] = React.useState(new Animated.Value(0));
+
+  const [open, setOpen] = React.useState<boolean>(false);
+
+  const popIn = () => {
+    setOpen(true);
+    Animated.timing(Button1, {
+      toValue: 80,
+      duration: 500,
       useNativeDriver: false,
     }).start();
-    active.current = !active.current;
+    Animated.timing(Button2, {
+      toValue: 160,
+      duration: 500,
+      useNativeDriver: false,
+    }).start();
+    Animated.timing(Button3, {
+      toValue: 240,
+      duration: 500,
+      useNativeDriver: false,
+    }).start();
+    Animated.timing(opacity, {
+      toValue: 1,
+      duration: 500,
+      useNativeDriver: false,
+    }).start();
   };
-
-  const Button = Animated.createAnimatedComponent(TouchableOpacity);
-  const backgroundColor = animatedState.interpolate({
-    inputRange: [0, 1],
-    outputRange: ["transparent", theme!.colors.secondary],
-  });
-
-  const secondBarWidth = animatedState.interpolate({
-    inputRange: [0, 1],
-    outputRange: [20, 30],
-    extrapolate: "clamp",
-  });
-  const firstBarTransform = {
-    transform: [
-      {
-        rotate: animatedState.interpolate({
-          inputRange: [0, 1],
-          outputRange: ["0deg", "-45deg"],
-          easing: Easing.ease,
-          extrapolate: "clamp",
-        }),
-      },
-      {
-        translateY: animatedState.interpolate({
-          inputRange: [0, 1],
-          outputRange: [0, 2],
-          extrapolate: "clamp",
-        }),
-      },
-    ],
-  };
-
-  const secondBarTransform = {
-    transform: [
-      {
-        rotate: animatedState.interpolate({
-          inputRange: [0, 1],
-          outputRange: ["0deg", "45deg"],
-          extrapolate: "clamp",
-        }),
-      },
-      {
-        translateY: animatedState.interpolate({
-          inputRange: [0, 1],
-          outputRange: [0, -4],
-          extrapolate: "clamp",
-        }),
-      },
-      {
-        translateX: animatedState.interpolate({
-          inputRange: [0, 1],
-          outputRange: [0, -4],
-          extrapolate: "clamp",
-        }),
-      },
-    ],
+  const popOut = () => {
+    setOpen(false);
+    Animated.timing(Button1, {
+      toValue: 0,
+      duration: 500,
+      useNativeDriver: false,
+    }).start();
+    Animated.timing(Button2, {
+      toValue: 0,
+      duration: 500,
+      useNativeDriver: false,
+    }).start();
+    Animated.timing(Button3, {
+      toValue: 0,
+      duration: 500,
+      useNativeDriver: false,
+    }).start();
+    Animated.timing(opacity, {
+      toValue: 0,
+      duration: 500,
+      useNativeDriver: false,
+    }).start();
   };
   return (
-    <View style={{ position: "absolute", right: 25, top: 60 }}>
+    <View
+      style={{
+        zIndex: 9999999,
+        position: "absolute",
+        right: 20,
+        top: 50,
+      }}
+    >
       <Button
-        style={{
-          borderRadius: 30,
-          width: 60,
-          height: 60,
-          justifyContent: "center",
-          alignContent: "center",
-          backgroundColor: theme?.colors.secondary,
-          // backgroundColor,
-        }}
-        onPress={handleActive}
+        onPress={() => console.log("create_button")}
+        style={[
+          styles.button,
+          styles.buttonPosition,
+          { opacity },
+          { top: Button1, backgroundColor: theme?.colors.secondary },
+        ]}
       >
-        <Animated.View
-          style={{
-            alignItems: "flex-end",
-            //   backgroundColor,
-            padding: 15,
-          }}
-        >
-          <Animated.View
-            style={[
-              {
-                width: 30,
-                height: 2.5,
-                backgroundColor: "#f0f0f0",
-              },
-              firstBarTransform,
-            ]}
+        <Feather name={"plus"} size={32} color={"#f0f0f0"} />
+      </Button>
+
+      <Button
+        onPress={() => console.log("hydrate_button")}
+        style={[
+          styles.button,
+          styles.buttonPosition,
+          { opacity },
+          { backgroundColor: theme?.colors.secondary },
+          { top: Button2 },
+        ]}
+      >
+        <HydrateIcon />
+      </Button>
+      <Button
+        onPress={() => navigate("SettingsScreen", {})}
+        style={[
+          styles.button,
+          styles.buttonPosition,
+          { opacity },
+          { backgroundColor: theme?.colors.secondary },
+          { top: Button3 },
+        ]}
+      >
+        <Feather name={"settings"} size={30} color={"#f0f0f0"} />
+      </Button>
+      <Button
+        onPress={() => (!open ? popIn() : popOut())}
+        style={[
+          styles.button,
+          { backgroundColor: open ? theme?.colors.secondary : "transparent" },
+        ]}
+      >
+        <View style={{ alignItems: "flex-end" }}>
+          <View
+            style={{
+              height: 2.5,
+              width: 30,
+              backgroundColor: "#f0f0f0",
+              marginBottom: 5,
+            }}
           />
-          <Animated.View
-            style={[
-              {
-                width: secondBarWidth,
-                height: 2.5,
-                marginTop: 5,
-                backgroundColor: "#f0f0f0",
-              },
-              secondBarTransform,
-            ]}
+          <View
+            style={{
+              height: 2.5,
+              width: 20,
+              backgroundColor: "#f0f0f0",
+            }}
           />
-        </Animated.View>
-      </Button>
-      <Button
-        style={{
-          alignItems: "flex-end",
-          backgroundColor: theme?.colors.secondary,
-          borderRadius: 30,
-          width: 60,
-          height: 60,
-          padding: 15,
-          justifyContent: "center",
-          alignContent: "center",
-        }}
-      >
-        <Feather name="plus" size={32} color="#f0f0f0" />
-      </Button>
-      <Button
-        style={{
-          alignItems: "flex-end",
-          backgroundColor: theme?.colors.secondary,
-          borderRadius: 30,
-          width: 60,
-          height: 60,
-          padding: 15,
-          justifyContent: "center",
-          alignContent: "center",
-        }}
-      >
-        <HydrateIcon/>
-      </Button>
-      <Button
-        style={{
-          alignItems: "flex-end",
-          backgroundColor: theme?.colors.secondary,
-          borderRadius: 30,
-          width: 60,
-          height: 60,
-          padding: 15,
-          // marginTop: 15,
-          top: 0,
-          justifyContent: "center",
-          alignContent: "center",
-        }}
-      >
-        <Feather name="settings" size={30} color="#f0f0f0" />
+        </View>
       </Button>
     </View>
   );
 };
 
 export default React.memo(Menu);
+
+const styles = StyleSheet.create({
+  button: {
+    borderRadius: 30,
+    width: 60,
+    height: 60,
+    padding: 15,
+    justifyContent: "center",
+    alignItens: "center",
+  },
+  buttonPosition: {
+    position: "absolute",
+    top: 0,
+  },
+});

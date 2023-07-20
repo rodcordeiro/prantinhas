@@ -30,7 +30,7 @@ export function CustomTheme<T = DefaultTheme>({
 }: React.PropsWithChildren<ThemeProps<T>>) {
   const [theme, setTheme] = usePersistedState<DefaultTheme | T | any>(
     "@pda::theme",
-    dark
+    light
   );
 
   const toggleTheme = useCallback(() => {
