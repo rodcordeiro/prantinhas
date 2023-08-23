@@ -1,6 +1,7 @@
 import { RouteProp } from "@react-navigation/native";
 
 export type RootStackParamList = {
+  PresentationScreen: {};
   HomeScreen: {};
   PlantView: {};
   PlantCreate: {};

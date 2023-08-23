@@ -7,7 +7,7 @@ import {
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { RootStackParamList } from "./interface";
 
-import { HomeScreen, SettingsScreen } from "../features";
+import { PresentationScreen, HomeScreen, SettingsScreen } from "../features";
 import { useTheme } from "../hooks/theme";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -27,8 +27,12 @@ export const Routes = () => {
             backgroundColor: theme?.colors.background.primary,
           },
         }}
-        initialRouteName="HomeScreen"
+        initialRouteName="PresentationScreen"
       >
+        <Stack.Screen
+          name="PresentationScreen"
+          component={PresentationScreen}
+        />
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
         <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
       </Stack.Navigator>
