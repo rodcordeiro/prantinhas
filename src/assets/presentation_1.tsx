@@ -1,3 +1,4 @@
+import { CSSProperties } from "react";
 import {
   Svg,
   Defs,
@@ -10,11 +11,17 @@ import {
   LinearGradient,
   Stop,
 } from "react-native-svg";
-export default () => (
+type Props = {
+  width: string | number;
+  height: string | number;
+  style?: CSSProperties;
+};
+export default ({ style, height, width }: Props) => (
   <Svg
     data-name="Layer 1"
-    width="930.25869"
-    height="652"
+    width={width}
+    height={height}
+    style={style}
     viewBox="0 0 930.25869 652"
   >
     <Defs>

@@ -1,5 +1,19 @@
 import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
+  presentation: {
+    marginTop: 100,
+    // justifyContent: "center",
+    alignItems: "center",
+  },
+  title: {
+    fontSize: 28,
+    fontWeight: "bold",
+  },
+  subtitle: {
+    fontSize: 18,
+    fontWeight: "200",
+    marginTop: 10,
+  },
   footer: {
     position: "absolute",
     bottom: 0,
@@ -7,7 +21,7 @@ export const styles = StyleSheet.create({
     justifyContent: "flex-end",
     alignItems: "center",
   },
-  footerText: {
+  footerNext: {
     right: 40,
   },
 });
