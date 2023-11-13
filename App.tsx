@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 import * as Updates from 'expo-updates';
 import * as SplashScreen from 'expo-splash-screen';
