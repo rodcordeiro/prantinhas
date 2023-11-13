@@ -3,6 +3,7 @@ import { RouteProp } from '@react-navigation/native';
 declare global {
   export type RootStackParamList = {
     PresentationScreen: {};
+    AuthenticatedRoutes: {};
     HomeScreen: {};
   };
 

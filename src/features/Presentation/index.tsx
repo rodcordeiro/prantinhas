@@ -1,35 +1,35 @@
 import React from 'react';
-import { View, Text, Pressable } from 'react-native';
+import { Animated, View, Text, Pressable } from 'react-native';
+import { useTheme } from '@/hooks/theme';
 
-const data = [
-  {
-    title: 'Leve suas plantas na palma da mão',
-    subtitle: 'Todas as informações sobre suas plantas ao seu alcance',
-    // Img: Presentation1,
-  },
-  {
-    title: 'Conheça mais sobre suas plantas',
-    subtitle:
-      'Ao cadastrar uma planta, ela é analisada por uma inteligência artificial.',
-    // Img: Presentation2,
-  },
-  {
-    title: 'E aprenda a cuidar melhor delas!',
-    subtitle:
-      'Após a análise, sugestões e dicas de como cuidar serão apresentadas e enviadas esporádicamente!',
-    // Img: Presentation3,
-  },
-];
+import { styles } from './style';
+import { Carousel } from './components/carousel';
+import { ScrollIndicator } from './components/ScrollIndicator';
 
-export const PresentationScreen: ScreenProps<'PresentationScreen'> = ({
-  navigation,
-}) => {
+export const PresentationScreen: React.FC<
+  ScreenProps<'PresentationScreen'>
+> = ({ navigation }) => {
+  const { theme } = useTheme();
+  const scrollX = React.useRef(new Animated.Value(0)).current;
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Presentation</Text>
-      <Pressable onPress={() => navigation.push('HomeScreen')}>
-      <Text>Navegar</Text>
-      </Pressable>
+    <View
+      style={[
+        styles.container,
+        { backgroundColor: theme.colors.background.primary },
+      ]}
+    >
+      <Carousel scrollX={scrollX} />
+      <View style={[styles.footer, { backgroundColor: theme.colors.primary }]}>
+        <Pressable onPress={() => navigation.push('AuthenticatedRoutes')}>
+          <Text style={{ color: theme.colors.background.primary }}>Pular</Text>
+        </Pressable>
+        <ScrollIndicator scrollX={scrollX} style={styles.indicator} />
+        <Pressable onPress={() => {}}>
+          <Text style={{ color: theme.colors.background.primary }}>
+            {/* Próximo */}
+          </Text>
+        </Pressable>
+      </View>
     </View>
   );
 };

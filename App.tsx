@@ -12,6 +12,7 @@ function App() {
       if (process.env.NODE_ENV === 'development') {
         return;
       }
+
       SplashScreen.preventAutoHideAsync();
       const { isAvailable } = await Updates.checkForUpdateAsync();
       if (isAvailable) {

@@ -1,12 +1,11 @@
 import React, { createContext, useCallback, useContext } from 'react';
 import { DefaultTheme, ThemeProvider } from 'styled-components';
 import usePersistedState from '../../utils/usePersistedState';
-import { StyleConstants } from '../../@types/style';
 import { Styles } from '../../styles/contants';
 import { dark, light } from '@/styles/theme';
 
 export interface ITheme {
-  theme: DefaultTheme & StyleConstants;
+  theme: DefaultTheme;
   toggleTheme(): void;
 }
 
@@ -25,7 +24,8 @@ export function CustomTheme({ children }: React.PropsWithChildren<ThemeProps>) {
   return (
     <>
       <ThemeContext.Provider
-        value={{ theme: { ...theme, ...Styles }, toggleTheme }}>
+        value={{ theme: { ...theme, ...Styles }, toggleTheme }}
+      >
         <ThemeProvider theme={theme}>{children}</ThemeProvider>
       </ThemeContext.Provider>
     </>

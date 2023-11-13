@@ -16,9 +16,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#2C8653"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -45,9 +43,7 @@
       "fallbackToCacheTimeout": 0,
       "url": "https://u.expo.dev/66b2ff34-c599-489a-85f6-b4a39a708780"
     },
-    "plugins": [
-      "sentry-expo"
-    ],
+    "plugins": ["sentry-expo"],
     "hooks": {
       "postPublish": [
         {

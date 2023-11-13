@@ -1,4 +1,4 @@
-import { CSSProperties } from "react";
+import { StyleProp, ViewStyle } from "react-native";
 import {
   Svg,
   Defs,
@@ -14,7 +14,7 @@ import {
 type Props = {
   width: string | number;
   height: string | number;
-  style?: CSSProperties;
+  style?: StyleProp<ViewStyle>;
 };
 export default ({ style, height, width }: Props) => (
   <Svg
