@@ -1,4 +1,4 @@
-import { CSSProperties } from "react";
+import { StyleProp, ViewStyle } from 'react-native';
 import {
   Svg,
   Defs,
@@ -10,11 +10,11 @@ import {
   Polygon,
   LinearGradient,
   Stop,
-} from "react-native-svg";
+} from 'react-native-svg';
 type Props = {
   width: string | number;
   height: string | number;
-  style?: CSSProperties;
+  style?: StyleProp<ViewStyle>;
 };
 
 export default (props: Props) => (
@@ -23,8 +23,7 @@ export default (props: Props) => (
     height={props.height}
     viewBox="0 0 177 184"
     fill="none"
-    style={props.style}
-  >
+    style={props.style}>
     <Path
       d="M107.999 182.991C107.999 183.262 107.778 183.484 107.507 183.484H0.492092C0.220939 183.484 0 183.262 0 182.991C0 182.719 0.220939 182.497 0.492092 182.497H107.507C107.778 182.497 107.999 182.719 107.999 182.991Z"
       fill="#3F3D58"

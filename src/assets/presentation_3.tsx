@@ -1,18 +1,21 @@
-import { CSSProperties } from "react";
-import { Svg, Defs, G, Rect, Path, ClipPath } from "react-native-svg";
+import { StyleProp, ViewStyle } from 'react-native';
+import { Svg, Defs, G, Rect, Path, ClipPath } from 'react-native-svg';
 type Props = {
   width: string | number;
   height: string | number;
-  style?: CSSProperties;
+  style?: StyleProp<ViewStyle>;
 };
-export default ({ width, height, style }: Props) => (
+export default ({
+  width,
+  height,
+  style = {} as StyleProp<ViewStyle>,
+}: Props) => (
   <Svg
     width={width}
     height={height}
-    style={style!}
+    style={style}
     viewBox="0 0 242 179"
-    fill="none"
-  >
+    fill="none">
     <G clip-path="url(#clip0_162_311)">
       <Path
         d="M103.163 121.381C103.163 121.381 135.301 117.518 146.55 111.402C157.798 105.286 241.357 102.389 241.357 121.381C241.357 140.373 145.264 148.742 145.264 148.742L94.8074 145.845L103.163 121.381Z"

@@ -1,4 +1,4 @@
-export const Styles: StyleConstants = {
+export const Styles = {
   text: {
     sizes: {
       h1: 24,
@@ -8,8 +8,8 @@ export const Styles: StyleConstants = {
     },
     weight: {
       bold: 'bold',
-      regular: 'regular',
-      thin: 'light',
+      regular: '400',
+      thin: '200',
     },
   },
-};
+} as const;

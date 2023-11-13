@@ -1,14 +1,15 @@
 import React from 'react';
-import {View,Text }from 'react-native';
+import { View, Text } from 'react-native';
 
-const HomeScreen: ScreenProps<'HomeScreen'> = ({
-    navigation,
-  }) => {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Home</Text>        
-      </View>
-    );
-  };
+import { Header } from '@/components/layout/Header';
 
-  export default React.memo(HomeScreen);
+const HomeScreen: ScreenProps<'HomeScreen'> = () => {
+  return (
+    <View style={{ flex: 1 }}>
+      <Header />
+      <Text>Home</Text>
+    </View>
+  );
+};
+
+export default React.memo(HomeScreen);
