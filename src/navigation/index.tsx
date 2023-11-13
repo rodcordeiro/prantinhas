@@ -7,7 +7,7 @@ import {
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RootStackParamList } from './interface';
 
-import { PresentationScreen, HomeScreen, SettingsScreen } from '../features';
+import { PresentationScreen } from '../features';
 import { useTheme } from '../hooks/theme';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
