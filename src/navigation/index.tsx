@@ -1,13 +1,11 @@
-import 'react-native-gesture-handler';
 import React from 'react';
 import {
   NavigationContainer,
   NavigationContainerRef,
 } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { RootStackParamList } from './interface';
 
-import { PresentationScreen } from '../features';
+import { PresentationScreen,HomeScreen } from '../features';
 import { useTheme } from '../hooks/theme';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -31,6 +29,10 @@ export const Routes = () => {
         <Stack.Screen
           name="PresentationScreen"
           component={PresentationScreen}
+        />
+        <Stack.Screen
+          name="HomeScreen"
+          component={HomeScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

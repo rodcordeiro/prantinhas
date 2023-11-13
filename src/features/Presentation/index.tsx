@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Pressable } from 'react-native';
 
 const data = [
   {
@@ -21,10 +21,15 @@ const data = [
   },
 ];
 
-export const PresentationScreen: ScreenProps<'PresentationScreen'> = () => {
+export const PresentationScreen: ScreenProps<'PresentationScreen'> = ({
+  navigation,
+}) => {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Vivo</Text>
+      <Text>Presentation</Text>
+      <Pressable onPress={() => navigation.push('HomeScreen')}>
+      <Text>Navegar</Text>
+      </Pressable>
     </View>
   );
 };

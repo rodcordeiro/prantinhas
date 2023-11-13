@@ -16,7 +16,7 @@ type ThemeProps = {
 const ThemeContext = createContext<ITheme>({} as ITheme);
 
 export function CustomTheme({ children }: React.PropsWithChildren<ThemeProps>) {
-  const [theme, setTheme] = usePersistedState<DefaultTheme>('theme', dark);
+  const [theme, setTheme] = usePersistedState<DefaultTheme>('theme', light);
 
   const toggleTheme = useCallback(() => {
     setTheme(theme.title === 'light' ? dark : light);

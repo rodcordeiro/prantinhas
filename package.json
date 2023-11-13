@@ -7,9 +7,9 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "format": "npm run lint && npm run prettier",
+    "format": "npm run lint && npm run pretty",
     "lint": "eslint --fix --ignore-path .eslintignore --fix --ext .ts,.tsx,.js,.jsx .",
-    "prettier": "prettier --ignore-path .eslintignore --write ."
+    "pretty": "prettier --ignore-path .eslintignore --write ."
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "1.18.2",
