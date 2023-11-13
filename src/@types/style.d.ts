@@ -1,6 +1,6 @@
-import "styled-components";
+import 'styled-components';
 
-declare module "styled-components" {
+declare module 'styled-components' {
   export interface DefaultTheme {
     title: string;
     colors: {
@@ -17,19 +17,20 @@ declare module "styled-components" {
     };
   }
 }
-
-export type StyleConstants = {
-  text: {
-    sizes: {
-      h1: number;
-      h2: number;
-      h3: number;
-      p: number;
-    };
-    weight: {
-      bold: string;
-      regular: string;
-      thin: string;
+declare global {
+  export type StyleConstants = {
+    text: {
+      sizes: {
+        h1: number;
+        h2: number;
+        h3: number;
+        p: number;
+      };
+      weight: {
+        bold: string;
+        regular: string;
+        thin: string;
+      };
     };
   };
-};
+}

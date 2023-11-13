@@ -1,55 +1,39 @@
-import React, { createContext, useCallback, useContext } from "react";
-import { DefaultTheme, ThemeProvider } from "styled-components";
-import usePersistedState from "../../utils/usePersistedState";
-import { StyleConstants } from "../../@types/style";
-import { Styles } from "../../styles/contants";
+import React, { createContext, useCallback, useContext } from 'react';
+import { DefaultTheme, ThemeProvider } from 'styled-components';
+import usePersistedState from '../../utils/usePersistedState';
+import { StyleConstants } from '../../@types/style';
+import { Styles } from '../../styles/contants';
+import { dark, light } from '@/styles/theme';
 
-export interface ITheme<T = DefaultTheme> {
-  theme?: T & StyleConstants;
-  light?: T;
-  dark?: T;
+export interface ITheme {
+  theme: DefaultTheme & StyleConstants;
   toggleTheme(): void;
-  title?: keyof T | string;
 }
 
-type ThemeProps<T> = {
-  light: T;
-  dark: T;
-  title: keyof T | string;
+type ThemeProps = {
   children?: any;
 };
-const ThemeContext = createContext<ITheme<DefaultTheme>>(
-  {} as ITheme<DefaultTheme>
-);
+const ThemeContext = createContext<ITheme>({} as ITheme);
 
-export function CustomTheme<T = DefaultTheme>({
-  children,
-  light,
-  dark,
-  title = "title",
-}: React.PropsWithChildren<ThemeProps<T>>) {
-  const [theme, setTheme] = usePersistedState<DefaultTheme | T | any>(
-    "@pda::theme",
-    light
-  );
+export function CustomTheme({ children }: React.PropsWithChildren<ThemeProps>) {
+  const [theme, setTheme] = usePersistedState<DefaultTheme>('theme', dark);
 
   const toggleTheme = useCallback(() => {
-    setTheme(theme[title] === "light" ? dark : light);
-  }, [dark, light, setTheme, theme, title]);
+    setTheme(theme.title === 'light' ? dark : light);
+  }, [dark, light, setTheme, theme]);
 
   return (
     <>
       <ThemeContext.Provider
-        value={{ theme: { ...theme, ...Styles }, toggleTheme }}
-      >
+        value={{ theme: { ...theme, ...Styles }, toggleTheme }}>
         <ThemeProvider theme={theme}>{children}</ThemeProvider>
       </ThemeContext.Provider>
     </>
   );
 }
 
-export function useTheme(): ITheme<DefaultTheme> {
-  return useContext<ITheme<DefaultTheme>>(ThemeContext);
+export function useTheme(): ITheme {
+  return useContext<ITheme>(ThemeContext);
 }
 
 export default ThemeContext;

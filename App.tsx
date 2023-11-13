@@ -1,4 +1,28 @@
-import Application from "./src";
-export default function App() {
+import React from 'react';
+import * as Updates from 'expo-updates';
+import * as SplashScreen from 'expo-splash-screen';
+import * as Sentry from 'sentry-expo';
+
+import Application from './src';
+
+function App() {
+  React.useLayoutEffect(() => {
+    async function updateApp() {
+      if (process.env.NODE_ENV === 'development') {
+        return;
+      }
+      SplashScreen.preventAutoHideAsync();
+      const { isAvailable } = await Updates.checkForUpdateAsync();
+      if (isAvailable) {
+        await Updates.fetchUpdateAsync();
+        await Updates.reloadAsync();
+      }
+      SplashScreen.hideAsync();
+    }
+    updateApp();
+  }, []);
+
   return <Application />;
 }
+
+export default Sentry.Native.wrap(App);

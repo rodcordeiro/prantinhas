@@ -13,8 +13,6 @@ function usePersistedState<T>(key: string, initialState: T): Response<T> {
       AsyncStorage.setItem(key, JSON.stringify(state));
     };
     getTheme();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [key]);
 
   const updateState = useCallback(

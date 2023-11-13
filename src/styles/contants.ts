@@ -1,5 +1,3 @@
-import { StyleConstants } from "../@types/style";
-
 export const Styles: StyleConstants = {
   text: {
     sizes: {
@@ -9,9 +7,9 @@ export const Styles: StyleConstants = {
       p: 14,
     },
     weight: {
-      bold: "bold",
-      regular: "regular",
-      thin: "light",
+      bold: 'bold',
+      regular: 'regular',
+      thin: 'light',
     },
   },
 };

@@ -1,16 +1,8 @@
-import { RootStackParamList } from "../navigation/interface";
+import { RootStackParamList } from '../navigation/interface';
 
-export type ScreenProps<T extends object = {}> = {
-  navigation: {
-    push<K extends keyof RootStackParamList>(
-      screen: K,
-      payload?: RootStackParamList[K]
-    ): void;
-    replace<K extends keyof RootStackParamList>(
-      screen: K,
-      payload?: RootStackParamList[K]
-    ): void;
-    pop(): void;
-    popToTop(): void;
-  };
-} & T;
+declare global {
+  type ScreenProps<T extends keyof RootStackParamList> = NativeStackScreenProps<
+    RootStackParamList,
+    T
+  >;
+}
