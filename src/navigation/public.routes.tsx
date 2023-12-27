@@ -9,8 +9,6 @@ import { AuthenticatedRoutes } from './Authenticated.routes';
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export const PublicRoutes = () => {
-  const { theme } = useTheme();
-
   return (
     <Stack.Navigator
       screenOptions={{
