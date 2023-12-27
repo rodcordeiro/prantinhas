@@ -7,7 +7,6 @@ import * as Sentry from 'sentry-expo';
 import Application from './src';
 import { View } from 'react-native';
 
-
 SplashScreen.preventAutoHideAsync();
 
 function App() {
