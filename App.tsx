@@ -5,28 +5,50 @@ import * as SplashScreen from 'expo-splash-screen';
 import * as Sentry from 'sentry-expo';
 
 import Application from './src';
-import { promiseWithTimeout } from '@/utils/promise.util';
+import { View } from 'react-native';
+
+SplashScreen.preventAutoHideAsync();
 
 function App() {
+  const [appIsReady, setAppIsReady] = React.useState(false);
   React.useLayoutEffect(() => {
     async function updateApp() {
-      if (process.env.NODE_ENV === 'development') {
-        return;
-      }
+      try {
+        if (process.env.NODE_ENV === 'development') {
+          return;
+        }
 
-      SplashScreen.preventAutoHideAsync();
-      const { isAvailable } = await Updates.checkForUpdateAsync();
-      if (isAvailable) {
-        await Updates.fetchUpdateAsync();
-        await Updates.reloadAsync();
+        const { isAvailable } = await Updates.checkForUpdateAsync();
+        if (isAvailable) {
+          await Updates.fetchUpdateAsync();
+          await Updates.reloadAsync();
+        }
+      } catch (e) {
+        console.warn(e);
+      } finally {
+        setAppIsReady(true);
       }
     }
-    promiseWithTimeout(updateApp(), 15000).finally(() =>
-      SplashScreen.hideAsync(),
-    );
+    updateApp();
   }, []);
-
-  return <Application />;
+  const onLayoutRootView = React.useCallback(async () => {
+    if (appIsReady) {
+      // This tells the splash screen to hide immediately! If we call this after
+      // `setAppIsReady`, then we may see a blank screen while the app is
+      // loading its initial state and rendering its first pixels. So instead,
+      // we hide the splash screen once we know the root view has already
+      // performed layout.
+      await SplashScreen.hideAsync();
+    }
+  }, [appIsReady]);
+  if (!appIsReady) {
+    return null;
+  }
+  return (
+    <View onLayout={onLayoutRootView}>
+      <Application />
+    </View>
+  );
 }
 
 export default Sentry.Native.wrap(App);

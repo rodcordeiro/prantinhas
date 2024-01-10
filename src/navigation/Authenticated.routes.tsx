@@ -16,7 +16,9 @@ export const AuthenticatedRoutes = () => {
         drawerStatusBarAnimation: 'slide',
         drawerActiveBackgroundColor: theme.colors.secondary,
         headerTransparent: true,
-        headerLeft: (props) => <DrawerIcon onPress={navigation.toggleDrawer} />,
+        headerLeft: (_props) => (
+          <DrawerIcon onPress={navigation.toggleDrawer} />
+        ),
         drawerType: 'slide',
         swipeEnabled: true,
         swipeEdgeWidth: 50,
