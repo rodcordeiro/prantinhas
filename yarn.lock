@@ -1888,10 +1888,10 @@
     "@gluestack-ui/utils" "^0.1.12"
     "@react-native-aria/focus" "^0.2.9"
 
-"@gluestack-ui/themed@^1.0.34":
-  version "1.0.34"
-  resolved "https://registry.yarnpkg.com/@gluestack-ui/themed/-/themed-1.0.34.tgz#75551159568cdc68fbf417ca920f86a34b5b21d1"
-  integrity sha512-Qyq6i/R4/4L1KFqh8VQWm0WKqW6sO6nDHKoWEHZZYLgSTyKRsAHN+MbkXT7Hh2IiOrlKWs0Tgzy5+/7FAAYDLA==
+"@gluestack-ui/themed@^1.0.35":
+  version "1.0.35"
+  resolved "https://registry.yarnpkg.com/@gluestack-ui/themed/-/themed-1.0.35.tgz#4129fcbc055351f335fdf4d1195d43e2acdcb5d9"
+  integrity sha512-zozkKnuCOuAKBrArgzt703EHcbXYL5Y4S8irhPL9Vvu9bs9QywqXLZA8PkK9RNUIk8A62A2jIKEtFpVaMqjiUA==
   dependencies:
     "@expo/html-elements" latest
     "@gluestack-style/animation-resolver" "1.0.3"
