@@ -12,7 +12,7 @@
     "pretty": "prettier --ignore-path .eslintignore --write ."
   },
   "dependencies": {
-    "@gluestack-style/react": "^1.0.31",
+    "@gluestack-style/react": "^1.0.45",
     "@gluestack-ui/themed": "^1.0.34",
     "expo": "~49.0.15",
     "expo-status-bar": "~1.6.0",
