@@ -5,7 +5,7 @@
     "orientation": "portrait",
     "description": "A plant health assistant app",
     "githubUrl": "https://github.com/rodcordeiro/prantinhas",
-    "backgroundColor": "#2C8653",
+    "backgroundColor": "#f0f0f0",
     "primaryColor": "#2C8653",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -42,18 +42,6 @@
     "updates": {
       "fallbackToCacheTimeout": 0,
       "url": "https://u.expo.dev/66b2ff34-c599-489a-85f6-b4a39a708780"
-    },
-    "plugins": ["sentry-expo"],
-    "hooks": {
-      "postPublish": [
-        {
-          "file": "sentry-expo/upload-sourcemaps",
-          "config": {
-            "organization": "rodcordeiro",
-            "project": "prantinhas"
-          }
-        }
-      ]
     }
   }
 }
