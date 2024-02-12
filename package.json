@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@gluestack-style/react": "^1.0.31",
-    "@gluestack-ui/themed": "^1.0.34",
+    "@gluestack-ui/themed": "^1.1.4",
     "expo": "~49.0.15",
     "expo-status-bar": "~1.6.0",
     "react": "18.2.0",
