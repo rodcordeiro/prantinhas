@@ -21,7 +21,9 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#2C8653"
-      }
+      },
+      "package": "com.rodcordeiro.prantinhas",
+      "versionCode": 1
     },
     "web": {
       "bundler": "metro",
