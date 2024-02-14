@@ -2,46 +2,38 @@
   "expo": {
     "name": "prantinhas",
     "slug": "prantinhas",
+    "version": "1.0.0",
     "orientation": "portrait",
-    "description": "A plant health assistant app",
-    "githubUrl": "https://github.com/rodcordeiro/prantinhas",
-    "backgroundColor": "#f0f0f0",
-    "primaryColor": "#2C8653",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "owner": "rodcordeiro",
-    "privacy": "public",
+    "icon": "./assets/images/icon.png",
+    "scheme": "myapp",
+    "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/images/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#2C8653"
+      "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#2C8653"
-      },
-      "package": "com.rodcordeiro.prantinhas",
-      "versionCode": 1
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
-    "experiments": {
-      "tsconfigPaths": true
-    },
-    "extra": {
-      "eas": {
-        "projectId": "66b2ff34-c599-489a-85f6-b4a39a708780"
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
       }
     },
-    "updates": {
-      "fallbackToCacheTimeout": 0,
-      "url": "https://u.expo.dev/66b2ff34-c599-489a-85f6-b4a39a708780"
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      "expo-router"
+    ],
+    "experiments": {
+      "typedRoutes": true
     }
   }
 }
